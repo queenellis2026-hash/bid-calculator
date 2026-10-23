@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10243e">
+<title>Flat Bid Calculator — Gulf Coast All Around Service</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Flat Bid Calculator</h1>
+  <p class="tag">Bid it flat. Half up front. Know your real $/hr.</p>
+</header>
+
+<main id="app">
+  <section class="card">
+    <h2>This bid</h2>
+    <label>Job name
+      <input id="jobName" type="text" placeholder="e.g. Smith — storm cleanup"></label>
+    <div class="btnrow">
+      <button id="saveJobBtn" type="button" class="mini">Save job</button>
+      <select id="jobsSelect" aria-label="Saved jobs"></select>
+      <button id="loadJobBtn" type="button" class="mini">Load</button>
+      <button id="delJobBtn" type="button" class="mini ghost">Delete</button>
+    </div>
+    <label>Your business name (prints on the summary)
+      <input id="bizName" type="text"></label>
+    <label>Your phone
+      <input id="bizPhone" type="text"></label>
+  </section>
+
+  <section class="card">
+    <h2>The job</h2>
+    <label>Crew size (people)
+      <input id="crew" type="number" inputmode="decimal" min="0" step="1"></label>
+    <label>Hours per person
+      <input id="hoursPerPerson" type="number" inputmode="decimal" min="0" step="0.5"></label>
+    <label>Hourly rate ($/hr per person)
+      <input id="rate" type="number" inputmode="decimal" min="0" step="1"></label>
+    <details>
+      <summary>What's my true rate? (labor burden helper)</summary>
+      <label>Bare wage ($/hr)
+        <input id="wage" type="number" inputmode="decimal" min="0" step="0.5"></label>
+      <label>Burden (%) <span class="hint">payroll taxes + workers comp + vehicle/fuel/small tools — the packs' sheet uses 20.65%</span>
+        <input id="burdenPct" type="number" inputmode="decimal" min="0" step="0.1"></label>
+      <div class="btnrow"><span id="burdenOut">—</span>
+        <button id="useRateBtn" type="button" class="mini">Use as my rate</button></div>
+    </details>
+    <h3>Crew preset</h3>
+    <div class="btnrow">
+      <input id="presetName" type="text" placeholder="Preset name">
+      <button id="savePresetBtn" type="button" class="mini">Save preset</button>
+    </div>
+    <div class="btnrow">
+      <select id="presetsSelect" aria-label="Crew presets"></select>
+      <button id="applyPresetBtn" type="button" class="mini">Apply</button>
+      <button id="delPresetBtn" type="button" class="mini ghost">Delete</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Materials</h2>
+    <label>Default markup (%) <span class="hint">a little for profit — 10–20% is the guideline; a line's own % overrides it</span>
+      <input id="defaultMarkupPct" type="number" inputmode="decimal" min="0" step="1"></label>
+    <div id="lines"></div>
+    <button id="addLineBtn" type="button" class="mini">+ Add a materials line</button>
+    <label class="check">
+      <input id="taxOn" type="checkbox">
+      Add sales tax on materials (passed through at cost — you don't mark up the tax)
+    </label>
+    <label>Tax on materials (%)
+      <input id="taxPct" type="number" inputmode="decimal" min="0" step="0.1"></label>
+  </section>
+
+  <section class="card">
+    <h2>Haul-off &amp; other</h2>
+    <label>Haul-off / loads ($)
+      <input id="hauloff" type="number" inputmode="decimal" min="0" step="1"></label>
+    <label>Other costs — gas, blades, tools ($)
+      <input id="other" type="number" inputmode="decimal" min="0" step="1"></label>
+  </section>
+
+  <section class="card">
+    <h2>Deposit &amp; rounding</h2>
+    <label>Deposit up front (%) <span class="hint">usual: half up front, balance on completion</span>
+      <input id="depositPct" type="number" inputmode="decimal" min="0" max="100" step="1"></label>
+    <label class="check">
+      <input id="smallJobWaiver" type="checkbox">
+      Small jobs ($500 &amp; under): no deposit — full amount on completion
+    </label>
+    <p id="waiverNote" class="note" style="display:none">Small-job rule applied: deposit is $0.00 on this bid.</p>
+    <label>Round the bid
+      <select id="roundTo">
+        <option value="0">No rounding</option>
+        <option value="10">Nearest $10</option>
+        <option value="50">Nearest $50</option>
+      </select></label>
+  </section>
+
+  <section class="card results">
+    <h2>Your flat bid</h2>
+    <div class="row"><span>Labor</span><strong id="outLabor">$0.00</strong></div>
+    <div class="row"><span>Materials (with markup)</span><strong id="outMaterials">$0.00</strong></div>
+    <div class="row"><span></span><small id="outMaterialsNote" class="hint"></small></div>
+    <div class="row"><span>Total crew time</span><strong id="outCrewHours">0 crew-hrs</strong></div>
+    <div class="row big"><span>FLAT BID</span><strong id="outBid">$0.00</strong></div>
+    <div class="row"><span>Deposit due up front</span><strong id="outDeposit">$0.00</strong></div>
+    <div class="row"><span>Balance on completion</span><strong id="outBalance">$0.00</strong></div>
+    <div class="row big"><span>Effective rate</span><strong id="outEffective">$0.00/hr</strong></div>
+    <p class="hint">Effective rate = bid ÷ total crew-hours. If it keeps missing your target, fix the rates — not the speed.</p>
+  </section>
+
+  <section class="card">
+    <h2>Change order</h2>
+    <label>Change amount ($) <span class="hint">use a negative number for a credit</span>
+      <input id="changeAmount" type="number" inputmode="decimal" step="1"></label>
+    <div class="row"><span>Revised total</span><strong id="outRevisedTotal">$0.00</strong></div>
+    <div class="row"><span>Revised balance due</span><strong id="outRevisedBalance">$0.00</strong></div>
+    <p class="hint">Deposit already collected stays put; the balance absorbs the change. Get the yes in writing before changed work starts.</p>
+  </section>
+
+  <button id="printBtn" type="button">Print a clean bid summary</button>
+  <button id="resetBtn" type="button" class="ghostbtn">Start a new bid</button>
+
+  <section class="card cta">
+    <h2>Paperwork that matches this math →</h2>
+    <p>Estimates, agreements, change orders and invoices built on these exact rules:</p>
+    <ul>
+      <li><a href="https://payhip.com/b/i7upw">Contractor Paperwork Pack — $39</a></li>
+      <li><a href="https://payhip.com/b/MpwPi">Landlord &amp; Rental Turnover Pack — $19</a></li>
+      <li><a href="https://payhip.com/b/TqNZ9">Tree Service Paperwork Pack — $24</a></li>
+    </ul>
+    <p><a class="shop" href="https://payhip.com/allaroundpaperwork">All Around Paperwork — the full shop</a></p>
+  </section>
+
+  <footer>
+    <p>Need the work done instead? <strong>Gulf Coast All Around Service · Milton, FL · (850) 380-8409</strong></p>
+    <p class="hint">Free tool. Everything you type stays in your own browser — no account, no server, nothing tracked.</p>
+  </footer>
+</main>
+
+<section id="printSheet" aria-hidden="true"></section>
+<script src="app.js"></script>
+</body>
+</html>

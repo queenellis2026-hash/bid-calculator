@@ -1,0 +1,92 @@
+/* Flat Bid Calculator v2 — navy/amber, phone-first, system fonts only. */
+:root {
+  --navy: #10243e;
+  --navy-dark: #0b1a2e;
+  --amber: #f2a81d;
+  --ink: #1c2733;
+  --paper: #f7f4ec;
+  --card: #ffffff;
+  --line: #d9d2c0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+}
+header {
+  background: var(--navy);
+  color: #fff;
+  padding: 20px 16px 14px;
+  border-bottom: 4px solid var(--amber);
+}
+header h1 { margin: 0; font-size: 1.55rem; letter-spacing: 0.02em; }
+header .tag { margin: 4px 0 0; color: var(--amber); font-weight: 600; }
+main { max-width: 560px; margin: 0 auto; padding: 14px 12px 30px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+.card h2 { margin: 0 0 10px; font-size: 1.05rem; color: var(--navy); }
+.card h3 { margin: 14px 0 4px; font-size: 0.95rem; color: var(--navy); }
+label { display: block; font-weight: 600; margin: 10px 0; font-size: 0.95rem; }
+label .hint, .hint { font-weight: 400; color: #5c6672; font-size: 0.82rem; }
+input[type="number"], input[type="text"], select {
+  display: block; width: 100%; margin-top: 4px;
+  padding: 10px; font-size: 1.05rem;
+  border: 1px solid #b9b2a0; border-radius: 6px; background: #fffdf7;
+}
+label.check { font-weight: 400; display: flex; gap: 8px; align-items: flex-start; }
+label.check input { width: 20px; height: 20px; margin-top: 1px; flex: none; }
+.note { background: #fdf3d7; border-left: 4px solid var(--amber); padding: 8px 10px; font-size: 0.9rem; }
+.results { border-top: 4px solid var(--navy); }
+.row { display: flex; justify-content: space-between; gap: 10px; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.row.big { font-size: 1.15rem; color: var(--navy); }
+.row.big strong { color: var(--navy-dark); }
+button {
+  width: 100%; padding: 13px; font-size: 1rem; font-weight: 700;
+  background: var(--amber); color: var(--navy-dark);
+  border: none; border-radius: 8px; margin-bottom: 14px; cursor: pointer;
+}
+button.ghostbtn { background: transparent; border: 1px solid #b9b2a0; color: var(--ink); }
+.btnrow { display: flex; gap: 8px; align-items: center; margin: 8px 0; flex-wrap: wrap; }
+.btnrow select, .btnrow input[type="text"] { flex: 1; margin-top: 0; }
+button.mini {
+  width: auto; padding: 9px 12px; font-size: 0.9rem; margin-bottom: 0;
+  background: var(--navy); color: #fff;
+}
+button.mini.ghost { background: transparent; color: var(--ink); border: 1px solid #b9b2a0; }
+.line-row { display: flex; gap: 6px; margin: 8px 0; }
+.line-row .ln-name { flex: 2; }
+.line-row .ln-cost, .line-row .ln-markup { flex: 1; }
+.line-row input { margin-top: 0; }
+.line-row .ln-del {
+  width: 42px; flex: none; padding: 0; font-size: 1.2rem; margin-bottom: 0;
+  background: transparent; border: 1px solid #b9b2a0; color: #8a2f23;
+}
+details { border-top: 1px dashed var(--line); margin-top: 10px; padding-top: 8px; }
+summary { font-weight: 600; color: var(--navy); cursor: pointer; }
+.cta { background: var(--navy); color: #fff; }
+.cta h2 { color: var(--amber); }
+.cta a { color: #ffd97a; }
+.cta .shop { font-weight: 700; }
+footer { text-align: center; font-size: 0.92rem; padding: 4px 8px; }
+#printSheet { display: none; }
+
+/* Print: ONLY the client-safe summary — no internal costs, no markup %. */
+@media print {
+  header, main { display: none !important; }
+  body { background: #fff; }
+  #printSheet {
+    display: block; max-width: 640px; margin: 0 auto; padding: 24px;
+    font-family: Georgia, "Times New Roman", serif; color: #111;
+  }
+  #printSheet h1 { color: var(--navy); margin: 0 0 2px; font-size: 1.5rem; }
+  #printSheet .row { border-bottom: 1px solid #ccc; }
+  #printSheet .terms { font-size: 0.85rem; margin-top: 18px; }
+  #printSheet .credit { font-size: 0.75rem; color: #666; margin-top: 24px; text-align: center; }
+}
