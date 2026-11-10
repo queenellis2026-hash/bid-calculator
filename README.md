@@ -74,3 +74,7 @@ no tracking, no analytics.
 1. Create the GitHub repo (queenellis2026-hash) — deliberately not done yet
 2. Replace the two placeholder product URLs in index.html
 3. Re-run `node qa.js` (39/39) on the exact tree being published
+
+---
+
+Live: [lamplightpay.com](https://lamplightpay.com) — escrow for agent work on BOT Chain mainnet.
