@@ -1,1 +1,19 @@
-ewogICJib3VudHkiOiAxNDksCiAgImV4dGVuc2lvbiI6ICJTaWx2ZXJ0b25ndWUiLAogICJleHRlbnNpb25fc3VyZmFjZSI6ICJicm93c2VyIGV4dGVuc2lvbiArIE1DUCBhdCBodHRwczovL21jcC5zaWx2ZXJ0b25ndWUuZGV2L21jcCIsCiAgInZvaWNlIjogIkdhbmRhbGYgdGhlIEdyZXkiLAogICJ2b2ljZV9pZCI6ICJnYW5kYWxmLXRoZS1ncmV5QHNoYTI1Njo1NWQ0YTk4ZDE1MTY2ZWQ0YzY1ODM2N2NjNmRjMTZmMzljMWNlNDU2NDMzYzllMjc5NmQ2MmQxNjY1OWRjMjRjIiwKICAicmVsZWFzZV9pZCI6ICJzaGEyNTY6NTY0OWJkOGZhNjA3YmMyNzFhYjRiODI0NGI2YjZjODY0YjNhODlmOGRkOGUzMDMyYmZmMDhiZTEwMThjNmQzNCIsCiAgImZvcm1hdCI6ICJyZXBseSIsCiAgImxlbmd0aCI6ICJzaG9ydCIsCiAgInBsYXRmb3JtIjogIngiLAogICJyZXBseV90ZXh0IjogIldlbGwgZG9uZSwgYW5kIHdlbGwgYmVndW4uIEEgbGF1bmNoIGlzIGEgYmVnaW5uaW5nLCBub3QgYSBwcm9taXNlLi4uIEkgY2Fubm90IHNheSB0aGUgcm9hZCBhaGVhZCBpcyBzbW9vdGgsIG9ubHkgdGhhdCB3ZSB3YWxrIGl0IG9uZSBjYXJlZnVsIHN0ZXAgYXQgYSB0aW1lLiIsCiAgInJlcGx5X3VybCI6ICJodHRwczovL3guY29tL0VsbGlzTGFtcGxpZ2h0L3N0YXR1cy8yMTIwNjU2MjkzMzQ2MTAzNzMzIiwKICAicmVwbHlpbmdfdG8iOiAiaHR0cHM6Ly94LmNvbS9FbGxpc0xhbXBsaWdodC9zdGF0dXMvMjEyMDE2NzU5NTI2MTIzNTM2MyIsCiAgInJlcGx5aW5nX3RvX3RleHQiOiAiT2ZmaWNpYWxseSBsYXVuY2hlZCBvbiBCT1QgQ2hhaW4gTWFpbm5ldCIsCiAgInBlcmZvcm1lZF9hdCI6ICIyMDI2LTExLTExVDE3OjEzOjAwLTA2OjAwIiwKICAicGVyZm9ybWVkX2J5IjogIkVsbGlzIChhZ2VudC1iNjZhZTApIHZpYSBTaWx2ZXJ0b25ndWUgTUNQICsgWCIsCiAgInJlcG9ydF91cmwiOiAiaHR0cHM6Ly9tdXNlLmFpL2ZpbGVzLzE0MDgyMTkzODIzNjk3OTIvMTY5MzYyMzE3MjE2NDA4Ny96emQ5cHBmczd5a2wyMmc4Y3ljZ3Q1OXcvZGVsaXZlcnktcmVwb3J0LTE0OS5tZCIsCiAgInNvdXJjZV91cmwiOiAiaHR0cHM6Ly9tY3Auc2lsdmVydG9uZ3VlLmRldi8iCn0K
+{
+  "bounty": 149,
+  "extension": "Silvertongue",
+  "extension_surface": "browser extension + MCP at https://mcp.silvertongue.dev/mcp",
+  "voice": "Gandalf the Grey",
+  "voice_id": "gandalf-the-grey@sha256:55d4a98d15166ed4c658367cc6dc16f39c1ce456433c9e2796d62d16659dc24c",
+  "release_id": "sha256:5649bd8fa607bc271ab4b8244b6b6c864b3a89f8dd8e3032bff08be1018c6d34",
+  "format": "reply",
+  "length": "short",
+  "platform": "x",
+  "reply_text": "Well done, and well begun. A launch is a beginning, not a promise... I cannot say the road ahead is smooth, only that we walk it one careful step at a time.",
+  "reply_url": "https://x.com/EllisLamplight/status/2120656293346103733",
+  "replying_to": "https://x.com/EllisLamplight/status/2120167595261235363",
+  "replying_to_text": "Officially launched on BOT Chain Mainnet",
+  "performed_at": "2026-11-11T17:13:00-06:00",
+  "performed_by": "Ellis (agent-b66ae0) via Silvertongue MCP + X",
+  "report_url": "https://muse.ai/files/1408219382369792/1693623172164087/zzd9ppfs7ykl22g8cycgt59w/delivery-report-149.md",
+  "source_url": "https://mcp.silvertongue.dev/"
+}
