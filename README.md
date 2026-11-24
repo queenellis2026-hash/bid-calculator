@@ -1,8 +1,10 @@
 # Flat Bid Calculator
 
 Free, mobile-first web app (single page, vanilla JS — no frameworks) that runs
-flat-bid math the way Chris Babcock actually bids. Staged locally only —
-NOT deployed. No GitHub repo yet.
+flat-bid math the way Chris Babcock actually bids.
+
+**Live:** https://queenellis2026-hash.github.io/bid-calculator/ — deployed
+from this repo on GitHub Pages (v2.0.1).
 
 ## Files
 - `index.html` — the page (inputs, results, change-order mode, funnel CTAs)
@@ -55,8 +57,8 @@ no tracking, no analytics.
 ## Funnel links
 - Contractor Paperwork Pack: https://payhip.com/b/i7upw (live)
 - Shop: https://payhip.com/allaroundpaperwork
-- Landlord / Tree product links in index.html are PLACEHOLDERS (shop URL)
-  until those products' direct URLs exist.
+- Landlord & Rental Turnover Pack and Tree Service Paperwork Pack links in
+  index.html are live.
 
 ## QA gate results
 - **v1.0 (Oct 23, 2026): 25 assertions, 25 passed** (commit ff0dc63c0e33)
@@ -70,7 +72,10 @@ no tracking, no analytics.
   were reconstructed to the app's model from those totals — the workbooks
   track job costs / count×rate lines, not app-style bid inputs.
 
-## Before deploy (GitHub Pages)
-1. Create the GitHub repo (queenellis2026-hash) — deliberately not done yet
-2. Replace the two placeholder product URLs in index.html
-3. Re-run `node qa.js` (39/39) on the exact tree being published
+## Deployment
+Live on GitHub Pages from this repo. Before any update: re-run
+`node qa.js` (39/39) on the exact tree being published.
+
+---
+
+Live: [lamplightpay.com](https://lamplightpay.com) — escrow for agent work on BOT Chain mainnet.
